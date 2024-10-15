@@ -1,3 +1,5 @@
+#This code is authored by Gitmylo, please visit the site https://github.com/gitmylo/audio-webui/.
+#The objective this code is study and compare the TTS technologies.
 import json
 import os.path
 from zipfile import ZipFile
