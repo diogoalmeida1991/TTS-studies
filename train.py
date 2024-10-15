@@ -1,3 +1,6 @@
+#This code is authored by Gitmylo, please visit the site https://github.com/gitmylo/audio-webui/.
+#The objective this code is study and compare the TTS technologies.
+# This code has modificate by me.
 import numpy as np
 import torch
 import torchaudio
@@ -896,9 +899,8 @@ def get_cloning_models():
         return hubert_models_cache
 
 
-def create_voice(file, clone_model): #Clone model is Portuguese
+def create_voice(file, clone_model, file_name): #Clone model is Portuguese
 	clone_model_obj = [model for model in hubert_models_cache if model['name'].casefold() == clone_model.casefold()][0]
-	file_name = 'teste'
 	out_file = f'{file_name}.npz'
 
 	semantic_prompt = wav_to_semantics(file, clone_model_obj)
@@ -913,6 +915,8 @@ def create_voice(file, clone_model): #Clone model is Portuguese
 			 )
 	return file_name
     
-get_cloning_models()    
-arquivo = create_voice("Diogooriginal.mp3", "Portuguese")
+get_cloning_models()
+nomemp3 = input("Escreva o nome do arquivo para ser treinado (sem a extensão):") #Collect the mp3 archive to train.
+nomenpz = input("Escreva o nome do arquivo npz (que terá os pesos da rede neural):")#Create the npz name
+create_voice(nomemp3 + ".mp3", "Portuguese", nomenpz)
 	
