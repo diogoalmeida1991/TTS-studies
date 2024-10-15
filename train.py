@@ -1,6 +1,6 @@
 #This code is authored by Gitmylo, please visit the site https://github.com/gitmylo/audio-webui/.
 #The objective this code is study and compare the TTS technologies.
-# This code has modificate by me.
+#This code was modified by me to create a neural network voice file for generating a personalized voice for TTS.
 import numpy as np
 import torch
 import torchaudio
