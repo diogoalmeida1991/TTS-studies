@@ -1,3 +1,4 @@
+#This file take the text and transform in a audio file with the announcer (.npz file)
 from scipy.io.wavfile import write as write_wav
 
 from bark.api import generate_audio
@@ -36,10 +37,11 @@ def generate_with_settings(text_prompt, semantic_temp=0.7, semantic_top_k=50, se
     return codec_decode(x_fine_gen)
 
 
-text_prompt = "Olá! Estou testando esse sistema!"
-filepath = "audio.wav" # change this to your desired output path
+text_prompt = output("Digite o texto que deve ser transformado em voz:") #The user write what must to be transformed to audio.
+filepath = output("Escolha o nome do arquivo:") # change this to your desired output path
+announcer = output("Escolha o nome do locutor (arquivo .npz sem extensão:)")
 
-audio_array = generate_with_settings(
+audio_array = generate_with_settings( #This is configuration
     text_prompt,
     semantic_temp=0.7,
     semantic_top_k=50,
@@ -48,7 +50,7 @@ audio_array = generate_with_settings(
     coarse_top_k=50,
     coarse_top_p=0.95,
     fine_temp=0.5,
-    voice_name="Diogo.npz",
+    voice_name= announcer + ".npz",
     use_semantic_history_prompt=False,
     use_coarse_history_prompt=True,
     use_fine_history_prompt=True,
